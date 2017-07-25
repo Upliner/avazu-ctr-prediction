@@ -4,9 +4,10 @@ from sklearn.cross_validation import train_test_split
 from train import save_model
 from utils import clean_df
 import pandas as pd
+import sys
 
 
-df = pd.read_csv('csv/train', header=0, chunksize=1)
+df = pd.read_csv('csv/train', header=0, chunksize=10000)
 
 
 global_X_test = numpy.ndarray((0,13))

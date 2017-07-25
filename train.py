@@ -41,13 +41,14 @@ def save_model(clf):
     joblib.dump(clf, 'classifier.pkl')
 
 
-train_data = load_df('csv/train_small.csv').values
+if __name__ == "__main__":
+    train_data = load_df('csv/train_small.csv').values
 
-X_train, X_test, y_train, y_test = train_test_split(train_data[0::, 1::], train_data[0::, 0],
+    X_train, X_test, y_train, y_test = train_test_split(train_data[0::, 1::], train_data[0::, 0],
                                                     test_size=0.3, random_state=0)
 
-classifier = classify(LogisticRegression, X_train, y_train)
-predictions = classifier.predict(X_test)
-print_metrics(y_test, predictions)
-save_model(classifier)
+    classifier = classify(LogisticRegression, X_train, y_train)
+    predictions = classifier.predict(X_test)
+    print_metrics(y_test, predictions)
+    save_model(classifier)
 
